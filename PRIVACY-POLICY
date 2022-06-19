@@ -13,7 +13,7 @@ The messages sent into a ticket (only if transcripts enabled)
 
 No other information outside of the above mentioned one will be stored.
 
-Updating Data¶
+Updating Data
 The data may be updated when using specific commands or our dashboard.
 Updating data will require the input of an end user, and data that can be seen as sensitive, such as content of a message, may need to be stored when using certain commands.
 

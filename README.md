@@ -1,5 +1,5 @@
 
-# Ticketer discord bot + Dashboard
+# Ticketer Discord Bot + Dashboard
 
 Ticketer provides a fast easy to use ticket system for your server including a dashboard! You can invite Ticketer to your server using the link below:
 

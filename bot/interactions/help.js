@@ -26,7 +26,7 @@ module.exports = {
       .setTitle('> Help')
       .setColor('BLURPLE')
       .setDescription(
-        `These are our most used commands! Please keep in mind that you can find every command on our [Website](https://ticketer.developersdungeon.xyz/commands).\n\n__Commands__${helpMessage}\n__Support__\nFeel free to contact us on our [Discord Server](https://discord.gg/NqDGtcB8Zt) if you have any questions or suggestions.\n\n__Developers Dungeon__\nThis project is brought to you by [Developers Dungeon Studios](https://developersdungeon.xyz/).`,
+        `These are our most used commands! Please keep in mind that you can find every command on our [Website](https://ticketer.developersdungeon.xyz/commands).\n\n__Commands__${helpMessage}\n__Support__\nFeel free to contact us on our [Discord Server](https://discord.gg/NqDGtcB8Zt) if you have any questions or suggestions.\n\n__Developers Dungeon__\nThis project is brought to you by [Developers Dungeon Studios](https://developersdungeon.xyz/).\n\n__Data Usage__\n[Our Privacy Policy](https://github.com/Developer-Dungeon-Studio/Ticketer/blob/main/PRIVACY-POLICY\n)`,
       )
       .setFooter({
         text: interaction.user.tag,

@@ -7,7 +7,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { join } = require('path');
 const { ChalkAdvanced } = require('chalk-advanced');
-const { fetchDungeon, fetchDungeonSingle } = require('dungeon-api');
+const { fetchDungeon, fetchDungeonSingle } = require('dungeon-api')
 
 /* Import modules */
 const { staffCommands } = require('../config.json');
@@ -21,8 +21,9 @@ module.exports = (client) => {
 
   // Wait for client to connect
   client.on('ready', async () => {
-    fetchDungeonSingle('ticketer', process.env.DEVELOPERSDUNGEON, client);
-    fetchDungeon('ticketer', process.env.DEVELOPERSDUNGEON, client);
+
+    fetchDungeonSingle("ticketer", process.env.DEVELOPERSDUNGEON, client)
+    fetchDungeon("ticketer", process.env.DEVELOPERSDUNGEON, client)
 
     Guild.find();
 
@@ -149,7 +150,19 @@ module.exports = (client) => {
         Guild.findOneAndUpdate({ id: message.guild.id }, { tickets: dbGuild.tickets }).catch();
       }
     });
-  });
+
+    const { client } = message;
+
+    if (message.content == `<@${client.user.id}>`) {
+      const msgEmbed = new MessageEmbed()
+        .setTitle('> Hey :wave:')
+        .setColor('BLURPLE')
+        .setDescription(`This bot uses \`/\` commands. Use \`/help\` to get a list of commands or visit our [website](${process.env.WEB}/commands).`)
+        .setFooter({ text: message.author.tag, iconURL: message.author.avatarURL({ dynamic: true }) });
+  
+      return message.channel.send({ embeds: [msgEmbed] });
+    }
+});
 
   // Shit code
   client.on('guildCreate', (guild) => {

@@ -1,0 +1,36 @@
+@media screen and (max-width: 800px) {
+    body .content .setting.list .items .item {
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    body .content .setting.list .items .item .inpset {
+        width: 90%;
+    }
+
+    body .content .setting.list .items .item .role {
+        width: 94%;
+    }
+
+    body .content .setting.list .items .item .icon {
+        position: absolute;
+        right: 2px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    body .content .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    body .content .container .item {
+        margin-left: -15px;
+        width: 80%;
+    }
+
+    body .content .container .item:not(:first-child) {
+        margin-top: 10px;
+    }
+}

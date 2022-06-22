@@ -103,9 +103,8 @@ dist
 # TernJS port file
 .tern-port
 
-# Config
-.eslintrc.js
-.tsconfig.json
-
-# Cdn
-web/cdn/tickets/*
+# Files
+save.txt
+tickets
+database_rewrite.js
+message_resend.js

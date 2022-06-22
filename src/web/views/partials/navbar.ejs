@@ -1,0 +1,41 @@
+<nav>
+    <div class="title" onclick="window.location.href='/'">
+        <img src="/assets/img/logo.webp" alt="Logo" class="logo">
+        <h1 class="brand" ">Ticketer</h1>
+    </div>
+    <i class='bx bx-menu icon'></i>
+    <div class="links">
+        <a href="/" class="link"><i class='bx bx-home-alt-2'></i> Home</a>
+        <a href="/commands" class="link"><i class='bx bx-food-menu'></i> Commands</a>
+        <a href="/documentation" class="link"><i class='bx bx-book-reader'></i> Documentation</a>
+        <a href="/invite" class="link"><i class='bx bx-link-external' ></i> Invite</a>
+    </div>
+    <div class="login">
+        <% if(!user) { %>
+        <a href="/api/login" class="button">Login</a>
+        <% } else { %>
+        <div class="dropdown">
+            <a class="text dropdown-toggle"><img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.webp"></img> <%= user.username %>#<%= user.discriminator %></a>
+            <div class="dropdown-content">
+                <a class="item" href="/dashboard">Dashboard</a>
+                <a class="item red" href="/api/logout">Logout</a>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</nav>
+
+<div class="nav-window">
+    <a href="/" class="item"><i class='bx bx-home-alt-2'></i> Home</a>
+    <a href="/commands" class="item"><i class='bx bx-food-menu'></i> Commands</a>
+    <a href="/documentation" class="item"><i class='bx bx-book-reader'></i> Documentation</a>
+    <a href="/invite" class="item"><i class='bx bx-link-external' ></i> Invite</a>
+    <br>
+    <% if(!user) { %>
+    <a href="/api/login" class="button">Login</a>
+    <% } else { %>
+    <a class="text"><%= user.username %>#<%= user.discriminator %></a>
+    <a class="item" href="/dashboard">Dashboard</a>
+    <a class="item" href="/api/logout">Logout</a>
+    <% } %>
+</div>

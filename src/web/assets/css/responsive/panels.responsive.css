@@ -1,0 +1,25 @@
+@media screen and (max-width: 715px) {
+    body {
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    body .content {
+        margin-left: 65px !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    body .content .list .item {
+        flex-direction: column;
+    }
+
+    body .content .list .item .name {
+        margin: 0px;
+    }
+    
+    body .content .list .item .id {
+        margin: 0px;
+    }
+}

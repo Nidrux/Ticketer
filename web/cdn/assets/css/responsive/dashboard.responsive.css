@@ -1,0 +1,14 @@
+@media screen and (max-width: 900px) {
+    body .list {
+        flex-direction: column;
+        margin-top: 80px;
+    }
+
+    body .list .guild {
+        width: 80%;
+    }
+
+    body .list .guild:not(:first-child) {
+        margin-top: 20px;
+    }
+}

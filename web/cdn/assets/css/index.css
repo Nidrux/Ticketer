@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    background-color: #111111;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+    font-family: 'Poppins', sans-serif;
+    font-display: swap;
+    overflow-x: hidden;
+    user-select: none;
+    background-image: url('/assets/img/bg.webp');
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+    background-color: #000000;
+    position: absolute;
+}
+   
+body::-webkit-scrollbar-thumb {
+    background: #5865F2; 
+    border-radius: 10px;
+}
+  
+body::-webkit-scrollbar-thumb:hover {
+    background: #454FBF; 
+}
+
+body .present {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 40px;
+    margin-bottom: 300px;
+}
+
+body .present .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #ffffff;
+}
+
+body .present .content .title {
+    margin: 0;
+    font-size: 2.5rem;
+    font-display: swap;
+}
+
+body .present .content .description {
+    margin: 0;
+    font-size: 1.2rem;
+    font-display: swap;
+    margin-top: -5px;
+}
+
+body .present .image img {
+    width: 560px;
+    height: 560px;
+    margin-left: -20px;
+}
+
+body .wave {
+    width: 102vw;
+    height: fit-content;
+    margin-top: 120px;
+    margin-left: -10px;
+}
+
+body .wave:not(:first-child) {
+    margin-top: -230px;
+}
+
+body .features {
+    width: 100vw;
+    background-color: #181818;
+    width: 101vw;
+    height: fit-content;
+    margin-top: -90px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 400px;
+}
+
+body .features .content.left {
+    text-align: left;
+    margin-left: 90px;
+    align-items: flex-start;
+}
+
+body .features .content.right {
+    text-align: right;
+    margin-right: 90px;
+    align-items: flex-end;
+}
+
+body .features .content {
+    display: flex;
+    flex-direction: column;
+}
+
+body .features .content:not(:first-child) {
+    margin-top: 60px;
+}
+
+body .features .content .title {
+    color: #ffffff;
+    margin: 0;
+    font-weight: 600;
+    font-display: swap;
+    font-size: 1.8rem;
+}
+
+body .features .content .description {
+    color: #ffffff;
+    margin: 0;
+    font-weight: 400;
+    font-display: swap;
+    font-size: 1.1rem;
+    width: 60%;
+}
+
+body .stats {
+    background-color: #111111;
+    width: 102vw;
+    height: fit-content;
+    padding: 40px 0 140px 0;
+    margin-top: -40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body .stats .title {
+    color: #ffffff;
+    margin-bottom: 50px;
+    margin-top: -25px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+body .stats .list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: transparent;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-top: -20px;
+}
+
+body .stats .list .project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 20px;
+    background-color: #0B0B0B;
+    padding: 35px 50px;
+    border-radius: 9px;
+    text-align: center;
+    width: 210px;
+    position: relative;
+}
+
+body .stats .list .project .image {
+    font-size: 2.9rem;
+    color: #ffffff;
+    border-radius: 100%;
+}
+
+body .stats .list .project .content .name {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.35rem;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ticketer - Easily manage users' concerns</title>
+    <meta name="keywords" content="ticketer, ticketer.developersdungeon.xyz, ticket, discord ticket, discord ticket bot, ticket bot, discord, ticket discord">
+    <meta name="description" content="With ticketer you can easily manage the concerns of your server members at any time. Very uncomplicated and with many possibilities!">
+    <meta name="author" content="Finn Kötting">
+
+    <link rel="stylesheet" href="/assets/css/reasons.css">
+    <link rel="stylesheet" href="/assets/css/responsive/reasons.responsive.css">
+    <link rel="stylesheet" href="/assets/css/partials/navbar.css">
+    <link rel="stylesheet" href="/assets/css/partials/sidenav.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="/assets/img/logo-round.webp" type="image/x-icon">
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="sidenav">
+        <div class="info">
+            <img src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.webp" alt="Icon" class="logo">
+            <h3 class="name"><%= guild.name %></h3>
+        </div>
+        <div class="links">
+            <p class="title">Informations</p>
+            <a href="/dashboard/<%= guild.id %>" class="item"><i class='bx bx-stats' ></i> Stats</a>
+            <a href="/dashboard/<%= guild.id %>/tickets" class="item"><i class='bx bx-conversation' ></i> Tickets</a>
+            <a href="/dashboard/<%= guild.id %>/staff" class="item"><i class='bx bx-box' ></i> Staff</a>
+            <p class="title">Settings</p>
+            <a href="/dashboard/<%= guild.id %>/settings" class="item"><i class='bx bx-cog' ></i> General</a>
+            <a href="/dashboard/<%= guild.id %>/settings/reasons" class="item active"><i class='bx bx-message-dots' ></i> Reasons</a>
+            <a href="/dashboard/<%= guild.id %>/settings/permissions" class="item"><i class='bx bx-error' ></i> Permissions</a>
+            <a href="/dashboard/<%= guild.id %>/settings/transcripts" class="item"><i class='bx bx-box' ></i> Logs</a>
+
+            <a href="/dashboard/" class="item last"><i class='bx bx-left-arrow-alt'></i> Server list</a>
+        </div>
+    </div>
+    <div class="sidenav-small">
+        <a href="/dashboard/<%= guild.id %>" class="item"><i class='bx bx-stats' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/tickets" class="item"><i class='bx bx-conversation' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/staff" class="item"><i class='bx bx-box' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings" class="item"><i class='bx bx-cog' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings/reasons" class="item active"><i class='bx bx-message-dots' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings/permissions" class="item"><i class='bx bx-error' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings/transcripts" class="item"><i class='bx bx-box' ></i></a>
+    </div>
+    
+    <div class="content">
+        <a class="button" onclick="addReason()">Add reason</a>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>&nbsp;</th>
+                <th>Reason</th>
+                <th>Description</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody class="tableContent">
+                <% db.options.forEach((reason) => { %>
+                    <tr class="reason" id="<%= reason.value %>">
+                        <td class="value" id="<%= reason.permissions %>"><%= reason.value %></td>
+                        <td><input type="text" value="<%= reason.label %>" placeholder="Label..." class="input labelInput" maxlength="40"></td>
+                        <td><input type="text" value="<%= reason.description %>" placeholder="Description..." class="input descInput" maxlength="80"></td>
+                        <td class="button red" onclick="deleteReason('<%= reason.value %>')"><i class='bx bx-x'></i></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <div class="pc-only">
+            <h3 class="title">Computer only</h3>
+            <p class="description">This page is for computers only. This is due, among other things, to the power of your device.</p>
+        </div>
+    </div>
+
+    <div class="saveChanges">
+        <p class="text">You have unsaved changes!</p>
+        <a class="button" onclick="saveChanges()">Save</a>
+    </div>
+
+    <script>
+        const guildId = "<%= db.id %>";
+        const userId = "<%= user.id %>";
+        let reasons = "<%= db.options.length %>";
+    </script>
+    <script src="/assets/js/partials/navbar.js"></script>
+    <script src="/assets/js/reasons.js"></script>
+</body>
+</html>

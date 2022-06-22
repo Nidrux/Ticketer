@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ticketer - Easily manage users' concerns</title>
+    <meta name="keywords" content="ticketer, ticketer.developersdungeon.xyz, ticket, discord ticket, discord ticket bot, ticket bot, discord, ticket discord">
+    <meta name="description" content="With ticketer you can easily manage the concerns of your server members at any time. Very uncomplicated and with many possibilities!">
+    <meta name="author" content="Finn Kötting">
+
+    <link rel="stylesheet" href="/assets/css/settings.css">
+    <link rel="stylesheet" href="/assets/css/responsive/settings.responsive.css">
+    <link rel="stylesheet" href="/assets/css/partials/navbar.css">
+    <link rel="stylesheet" href="/assets/css/partials/sidenav.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="/assets/img/logo-round.webp" type="image/x-icon">
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="sidenav">
+        <div class="info">
+            <img src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.webp" alt="Icon" class="logo">
+            <h3 class="name"><%= guild.name %></h3>
+        </div>
+        <div class="links">
+            <p class="title">Informations</p>
+            <a href="/dashboard/<%= guild.id %>" class="item"><i class='bx bx-stats' ></i> Stats</a>
+            <a href="/dashboard/<%= guild.id %>/tickets" class="item"><i class='bx bx-conversation' ></i> Tickets</a>
+            <a href="/dashboard/<%= guild.id %>/staff" class="item"><i class='bx bx-box' ></i> Staff</a>
+            <p class="title">Settings</p>
+            <a href="/dashboard/<%= guild.id %>/settings" class="item active"><i class='bx bx-cog' ></i> General</a>
+            <a href="/dashboard/<%= guild.id %>/settings/reasons" class="item"><i class='bx bx-message-dots' ></i> Reasons</a>
+            <a href="/dashboard/<%= guild.id %>/settings/permissions" class="item"><i class='bx bx-error' ></i> Permissions</a>
+            <a href="/dashboard/<%= guild.id %>/settings/transcripts" class="item"><i class='bx bx-box' ></i> Logs</a>
+
+            <a href="/dashboard/" class="item last"><i class='bx bx-left-arrow-alt'></i> Server list</a>
+        </div>
+    </div>
+    <div class="sidenav-small">
+        <a href="/dashboard/<%= guild.id %>" class="item"><i class='bx bx-stats' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/tickets" class="item"><i class='bx bx-conversation' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/staff" class="item"><i class='bx bx-box' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings" class="item active"><i class='bx bx-cog' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings/reasons" class="item"><i class='bx bx-message-dots' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings/permissions" class="item"><i class='bx bx-error' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings/transcripts" class="item"><i class='bx bx-box' ></i></a>
+    </div>
+    
+    <div class="content">
+        <div class="setting">
+            <h3 class="title">Bot nickname</h3>
+            <p class="description">The bots nickname for the selected server.</p>
+            <input id="nicknameInput" maxlength="30" class="textarea inpset" value="<%= nickname ? nickname : 'Ticketer' %>">
+        </div>
+        <div class="setting">
+            <h3 class="title">Ticket name</h3>
+            <p class="description">What should the Ticket Channel be called? Placeholder: <b>{id}</b> the id of the ticket, <b>{user_name}</b> name of the user who created the ticket, <b>${user_tag}</b> the tag of the user who created the ticket</p>
+            <input id="channelInput" maxlength="30" class="textarea inpset" value="<%= db.settings.nameprefix %>">
+        </div>
+        <div class="setting">
+            <h3 class="title">Ticket channel</h3>
+            <p class="description">The channel in which the ticket message is sent.</p>
+            <select name="whishlist" class="select inpset" id="channelSelect">
+                <option value="none" class="option">- None -</option>
+                <% channels.forEach((channel) => { %>
+                    <% let selected; %>
+                    <% if(db.settings.channel !== 'none' && channel.id == db.settings.channel) selected = 'selected'; %>
+                    <option value="<%= channel.id %>" <%- selected %> class="option"><%= channel.name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div class="setting">
+            <h3 class="title">Ticket category</h3>
+            <p class="description">Under which categorie should the tickets be created.</p>
+            <select name="whishlist" class="select inpset" id="categorySelect">
+                <option value="none" class="option">- None -</option>
+                <% categorys.forEach((category) => { %>
+                    <% let selected; %>
+                    <% if(db.settings.category !== 'none' && category.id == db.settings.category) selected = 'selected'; %>
+                    <option value="<%= category.id %>" <%- selected %> class="option"><%= category.name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div class="setting">
+            <h3 class="title">Tickets at once</h3>
+            <p class="description">The maximum number of tickets a user may own at once</p>
+            <input id="maxticketsInput" type="number" value="<%= db.settings.maxtickets %>" min="1" max="10" class="textarea inpset">
+        </div>
+        <div class="setting">
+            <h3 class="title">Ticket message</h3>
+            <p class="description">What should the message to create the ticket look like?</p>
+            <textarea id="messageInput" cols="2" maxlength="400" class="textarea inpset long"><%- db.settings.messages.create.replaceAll('\\n', '\n') %></textarea>
+            <% let charsLeft = 400 - db.settings.messages.create.replaceAll('\\n', '\n').length %>
+            <p class="chars" id="messageInputChars"><%= charsLeft %> characters left</p>
+        </div>
+    </div>
+
+    <div class="saveChanges">
+        <p class="text">You have unsaved changes!</p>
+        <a class="button" onclick="saveChanges()">Save</a>
+    </div>
+
+    <script>
+        const guildId = "<%= db.id %>";
+        const userId = "<%= user.id %>";
+    </script>
+    <script src="/assets/js/partials/navbar.js"></script>
+    <script src="/assets/js/settings.js"></script>
+</body>
+</html>

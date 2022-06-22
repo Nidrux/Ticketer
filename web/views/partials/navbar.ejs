@@ -1,0 +1,41 @@
+<nav>
+    <div class="title" onclick="window.location.href='https://ticketer.developersdungeon.xyz/'">
+        <img src="/assets/img/logo.webp" alt="Logo" class="logo">
+        <h1 class="brand" ">Ticketer</h1>
+    </div>
+    <i class='bx bx-menu icon'></i>
+    <div class="links">
+        <a href="/" class="link"><i class='bx bx-home-alt-2'></i> Home</a>
+        <a href="/commands" class="link"><i class='bx bx-food-menu'></i> Commands</a>
+        <a href="/documentation" class="link"><i class='bx bx-book-reader'></i> Documentation</a>
+        <a href="https://discord.com/api/oauth2/authorize?client_id=977591057711792178&permissions=137909037169&scope=bot%20applications.commands" class="link"><i class='bx bx-link-external' ></i> Invite</a>
+    </div>
+    <div class="login">
+        <% if(!user) { %>
+        <a href="/api/login" class="button">Login</a>
+        <% } else { %>
+        <div class="dropdown">
+            <a class="text dropdown-toggle"><img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.webp"></img> <%= user.username %>#<%= user.discriminator %></a>
+            <div class="dropdown-content">
+                <a class="item" href="/dashboard">Dashboard</a>
+                <a class="item red" href="/api/logout">Logout</a>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</nav>
+
+<div class="nav-window">
+    <a href="/" class="item"><i class='bx bx-home-alt-2'></i> Home</a>
+    <a href="/commands" class="item"><i class='bx bx-food-menu'></i> Commands</a>
+    <a href="/documentation" class="item"><i class='bx bx-book-reader'></i> Documentation</a>
+    <a href="https://discord.com/api/oauth2/authorize?client_id=977591057711792178&permissions=137909037169&scope=bot%20applications.commands" class="item"><i class='bx bx-link-external' ></i> Invite</a>
+    <br>
+    <% if(!user) { %>
+    <a href="/api/login" class="button">Login</a>
+    <% } else { %>
+    <a class="text"><%= user.username %>#<%= user.discriminator %></a>
+    <a class="item" href="/dashboard">Dashboard</a>
+    <a class="item" href="/api/logout">Logout</a>
+    <% } %>
+</div>

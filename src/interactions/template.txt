@@ -1,9 +1,0 @@
-/* Import packages */
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
-
-/* Import files */
-const { errorLog } = require('../util/functions/error');
-const guild = require('../util/functions/guild');
-
-/* Export */
-module.exports = async (client, interaction, dbGuild) => {}

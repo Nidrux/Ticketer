@@ -1,0 +1,30 @@
+<div class="setting" id="invite_the_bot">
+    <h3 class="title">Invite the bot</h3>
+    <p class="description">
+        To get started, the first thing you need is the bot on the server where you want tickets.
+        <br><br>
+        For this we go to the 
+        <a  class="link" href="https://discord.com/api/oauth2/authorize?client_id=977591057711792178&permissions=137909037169&scope=bot%20applications.commands" target="_blank">Discord auth page</a> 
+        and invite the bot to our server.
+    </p>
+    <img src="https://cdn.discordapp.com/attachments/947958518772809748/985185271404445746/unknown.png" alt="Image" class="image">
+    <p class="description">
+        Then click on "Select a server" and select the server to which the bot should be invited. Then click on "Continue".
+        <br><br>
+        You can turn all permissions on or off individually. The permissions you see are needed to enable tickets on your server. You can give ticketer the administrator permission via the role or via the dashboard and avoid permission errors.
+        <br><br>
+        After that you click on "Authorize".
+        <br><br>
+        The bot is now on your server and you can use the command 
+        <a class="command command_resend" href="/commands?name=resend">/resend</a>
+        <script>
+            tippy('.command_resend', {
+                content: 'Resends the ticket message.'
+            })
+        </script>
+        to send the ticket embed or 
+        <a class="link" href="/documentation?page=dashboard">continue with the dashboard configuration</a>.
+        <br><br>
+        Disclaimer: Inviting only the bot will not allow you to use all the features automatically. Some functions are only available for premium members and when the bot has been configured!
+    </p>
+</div>

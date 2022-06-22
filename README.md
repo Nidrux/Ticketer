@@ -1,9 +1,9 @@
 
-# Ticketer discord bot + Dashboard
+# Ticketer Discord Bot + Dashboard
 
 Ticketer provides a fast easy to use ticket system for your server including a dashboard! You can invite Ticketer to your server using the link below:
 
-### [Invite Ticketer](https://discord.com/oauth2/authorize?client_id=977591057711792178&permissions=137909037169&scope=bot%20applications.commands)
+# [Invite Ticketer](https://discord.com/oauth2/authorize?client_id=977591057711792178&permissions=137909037169&scope=bot%20applications.commands)
 
 ## Requirements
 
@@ -29,7 +29,7 @@ TOKEN=
 DATABASE_URI=
 GUILD_ID=
 CLIENT_SECRET=
-WEB=
+CALLBACK_URL=
 API_KEY=
 PORT=
 LOG_CHANNEL=

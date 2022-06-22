@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ticketer - Easily manage users' concerns</title>
+    <meta name="keywords" content="ticketer, ticketer.developersdungeon.xyz, ticket, discord ticket, discord ticket bot, ticket bot, discord, ticket discord">
+    <meta name="description" content="With ticketer you can easily manage the concerns of your server members at any time. Very uncomplicated and with many possibilities!">
+    <meta name="author" content="Finn Kötting">
+
+    <link rel="stylesheet" href="/assets/css/permissions.css">
+    <link rel="stylesheet" href="/assets/css/responsive/settings.responsive.css">
+    <link rel="stylesheet" href="/assets/css/partials/navbar.css">
+    <link rel="stylesheet" href="/assets/css/partials/sidenav.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="/assets/img/logo-round.webp" type="image/x-icon">
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="sidenav">
+        <div class="info">
+            <img src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.webp" alt="Icon" class="logo">
+            <h3 class="name"><%= guild.name %></h3>
+        </div>
+        <div class="links">
+            <p class="title">Informations</p>
+            <a href="/dashboard/<%= guild.id %>" class="item"><i class='bx bx-stats' ></i> Stats</a>
+            <a href="/dashboard/<%= guild.id %>/tickets" class="item"><i class='bx bx-conversation' ></i> Tickets</a>
+            <a href="/dashboard/<%= guild.id %>/staff" class="item"><i class='bx bx-box' ></i> Staff</a>
+            <p class="title">Settings</p>
+            <a href="/dashboard/<%= guild.id %>/settings" class="item"><i class='bx bx-cog' ></i> General</a>
+            <a href="/dashboard/<%= guild.id %>/settings/reasons" class="item"><i class='bx bx-message-dots' ></i> Reasons</a>
+            <a href="/dashboard/<%= guild.id %>/settings/permissions" class="item active"><i class='bx bx-error' ></i> Permissions</a>
+            <a href="/dashboard/<%= guild.id %>/settings/transcripts" class="item"><i class='bx bx-box' ></i> Logs</a>
+
+            <a href="/dashboard/" class="item last"><i class='bx bx-left-arrow-alt'></i> Server list</a>
+        </div>
+    </div>
+    <div class="sidenav-small">
+        <a href="/dashboard/<%= guild.id %>" class="item"><i class='bx bx-stats' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/tickets" class="item"><i class='bx bx-conversation' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/staff" class="item"><i class='bx bx-box' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings" class="item"><i class='bx bx-cog' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings/reasons" class="item"><i class='bx bx-message-dots' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings/permissions" class="item active"><i class='bx bx-error' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings/transcripts" class="item"><i class='bx bx-box' ></i></a>
+    </div>
+
+    <div class="content">
+        <div class="setting">
+            <h3 class="title">Staff role</h3>
+            <p class="description">The role required to manage tickets.</p>
+            <select name="whishlist" class="select inpset" id="staffSelect">
+                <option value="none" class="option">- None -</option>
+                <% roles.forEach((role) => { %>
+                    <% let selected; %>
+                    <% if(db.settings.staff.role !== 'none' && role.id == db.settings.staff.role) selected = 'selected'; %>
+                    <option value="<%= role.id %>" <%- selected %> class="option"><%= role.name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div class="setting">
+            <h3 class="title">Ticket permissions</h3>
+            <p class="description">Which role is authorized to process which tickets <br class="lb"><a class="red">Depends on server permissions!</a></p>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>&nbsp;</th>
+                    <th>Reason</th>
+                    <th>Role</th>
+                  </tr>
+                </thead>
+                <tbody class="tableContent">
+                    <% db.options.forEach((reason) => { %>
+                        <tr class="reason" id="<%= reason.value %>">
+                            <td class="value" id="<%= reason.permissions %>"><%= reason.value %></td>
+                            <td><%= reason.label %></td>
+                            <td>            
+                                <select name="whishlist" class="select inpset reasonSelect" id="reasonSelect">
+                                    <option value="none" class="option">- None -</option>
+                                    <% roles.forEach((role) => { %>
+                                        <% let selected; %>
+                                        <% if(reason.permissions !== 'none' && role.id == reason.permissions) selected = 'selected'; %>
+                                        <option value="<%= role.id %>" <%- selected %> class="option"><%= role.name %></option>
+                                    <% }) %>
+                                </select>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="saveChanges">
+        <p class="text">You have unsaved changes!</p>
+        <a class="button" onclick="saveChanges()">Save</a>
+    </div>
+
+    <script>
+        const guildId = "<%= db.id %>";
+        const userId = "<%= user.id %>";
+    </script>
+    <script src="/assets/js/partials/navbar.js"></script>
+    <script src="/assets/js/permissions.js"></script>
+</body>
+</html>

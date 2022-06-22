@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ticketer - Easily manage users' concerns</title>
+    <meta name="keywords" content="ticketer, ticketer.developersdungeon.xyz, ticket, discord ticket, discord ticket bot, ticket bot, discord, ticket discord">
+    <meta name="description" content="With ticketer you can easily manage the concerns of your server members at any time. Very uncomplicated and with many possibilities!">
+    <meta name="author" content="Developer Dungeon Studios">
+
+    <link rel="stylesheet" href="/assets/css/commands.css">
+    <link rel="stylesheet" href="/assets/css/partials/navbar.css">
+    <link rel="stylesheet" href="/assets/css/partials/footer.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="/assets/img/logo-round.webp" type="image/x-icon">
+</head>
+<body class>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="list">
+        <h2 class="title">Command overview</h2>
+        <div class="command" id="help">
+            <h2 class="name">/help</h2>
+            <div class="info">
+                <p class="description">Shows you the help message.</p>
+                <p class="usuage">Usuage: /help</p>
+            </div>
+        </div>
+        <div class="command" id="ping">
+            <h2 class="name">/ping</h2>
+            <div class="info">
+                <p class="description">Returns the bots latency</p>
+                <p class="usuage">Usuage: /ping</p>
+            </div>
+        </div>
+        <div class="command" id="info">
+            <h2 class="name">/info</h2>
+            <div class="info">
+                <p class="description">General statistics about the bot.</p>
+                <p class="usuage">Usuage: /info</p>
+            </div>
+        </div>
+        <div class="command" id="invite">
+            <h2 class="name">/invite</h2>
+            <div class="info">
+                <p class="description">Posts the invite link for the bot.</p>
+                <p class="usuage">Usuage: /invite</p>
+            </div>
+        </div>
+        <div class="command" id="dashboard">
+            <h2 class="name">/dashboard</h2>
+            <div class="info">
+                <p class="description">Shows you the dashboard for the current guild.</p>
+                <p class="usuage">Usuage: /dashboard</p>
+            </div>
+        </div>
+        <div class="command" id="resend">
+            <h2 class="name">/resend</h2>
+            <div class="info">
+                <p class="description">Resends the ticket message.</p>
+                <p class="usuage">Usuage: /resend</p>
+            </div>
+        </div>
+        <div class="command" id="claim">
+            <h2 class="name">/claim</h2>
+            <div class="info">
+                <p class="description">Claims the current ticket.</p>
+                <p class="usuage">Usuage: /claim</p>
+            </div>
+        </div>
+        <div class="command" id="transfer">
+            <h2 class="name">/transfer</h2>
+            <div class="info">
+                <p class="description">Transfer the ticket to another user.</p>
+                <p class="usuage">Usuage: /transfer [user]</p>
+            </div>
+        </div>
+        <div class="command" id="transcript">
+            <h2 class="name">/transcript</h2>
+            <div class="info">
+                <p class="description">Generate a transcript for the current ticket.</p>
+                <p class="usuage">Usuage: /transcript</p>
+            </div>
+        </div>
+        <div class="command" id="adduser">
+            <h2 class="name">/adduser</h2>
+            <div class="info">
+                <p class="description">Add a user to the current ticket.</p>
+                <p class="usuage">Usuage: /adduser [user]</p>
+            </div>
+        </div>
+        <div class="command" id="close">
+            <h2 class="name">/close</h2>
+            <div class="info">
+                <p class="description">Close the current ticket.</p>
+                <p class="usuage">Usuage: /close</p>
+            </div>
+        </div>
+        <div class="command" id="lock">
+            <h2 class="name">/lock</h2>
+            <div class="info">
+                <p class="description">Lock the current ticket.</p>
+                <p class="usuage">Usuage: /lock</p>
+            </div>
+        </div>
+        <div class="command" id="unlock">
+            <h2 class="name">/unlock</h2>
+            <div class="info">
+                <p class="description">Unlock the current ticket.</p>
+                <p class="usuage">Usuage: /unlock</p>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+
+    <script>
+        let name = '<%= name %>'
+    </script>
+    <script src="/assets/js/commands.js"></script>
+    <script src="/assets/js/partials/navbar.js"></script>
+</body>
+</html>

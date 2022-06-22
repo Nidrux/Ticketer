@@ -1,0 +1,89 @@
+.message {
+    position: fixed;
+    z-index: 99999;
+    bottom: 10px;
+    left: 10px;
+    background-color: #000000;
+    padding: 9px 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 40%;
+    display: none;
+}
+
+.message.active {
+    display: flex;
+}
+
+.message .text {
+    color: #ffffff;
+    margin: 0;
+    white-space: initial;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.message .button {
+    color: #a3a3a3;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-size: 1.3rem;
+    margin-left: 15px;
+    margin-right: -10px;
+    cursor: pointer;
+}
+
+@keyframes msgIn {
+    0% {
+        bottom: 5px;
+        display: flex;
+        visibility: visible;
+        opacity: 0;
+    }
+    100% {
+        bottom: 10px;
+        display: flex;
+        visibility: visible;
+        opacity: 1;
+    }
+} 
+
+@keyframes msgOut {
+    0% {
+        bottom: 10px;
+        display: flex;
+        visibility: visible;
+        opacity: 1;
+    }
+    100% {
+        bottom: 5px;
+        display: flex;
+        visibility: visible;
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .message {
+        max-width: 60%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .message {
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .message {
+        display: none !important;
+    }
+}

@@ -1,0 +1,84 @@
+@media screen and (max-width: 1250px) {
+    body .present .content {
+        margin-left: 160px;
+        margin-right: 0;
+    }
+    
+    body .present .content .description {
+        width: 100%;
+    }
+
+    body .present .image {
+        margin-left: 0;
+        margin-right: 210px;
+        overflow: unset;
+    }
+
+    body .present .image img {
+        width: 80% !important;
+        height: auto;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    body .features, body .stats {
+        margin-top: -40px;
+    }
+
+    body .features {
+        padding-bottom: 240px;
+    }
+
+    body .stats .title {
+        margin-top: -10px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    body .present {
+        width: 100%;
+        margin-top: 190px;
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: center;
+    }
+
+    body .present .content {
+        align-items: center;
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    body .present .image {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    body .features {
+        margin-top: -10px;
+        padding-bottom: 100px;
+    }
+
+    body .features .content.left, body .features .content.right {
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
+        align-items: center;
+    }
+
+    body .features .content {
+        margin-top: 20px;
+    }
+
+    body .wave :nth-child(2) {
+        margin-top: -50px;
+    }
+
+    body .stats {
+        margin-top: -8px;
+    }
+}

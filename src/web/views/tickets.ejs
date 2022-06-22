@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ticketer - Easily manage users' concerns</title>
+    <meta name="keywords" content="ticketer, ticketer.developersdungeon.xyz, ticket, discord ticket, discord ticket bot, ticket bot, discord, ticket discord">
+    <meta name="description" content="With ticketer you can easily manage the concerns of your server members at any time. Very uncomplicated and with many possibilities!">
+    <meta name="author" content="Developer Dungeon Studiosngeon Studios">
+
+    <link rel="stylesheet" href="/assets/css/tickets.css">
+    <link rel="stylesheet" href="/assets/css/responsive/tickets.responsive.css">
+    <link rel="stylesheet" href="/assets/css/partials/navbar.css">
+    <link rel="stylesheet" href="/assets/css/partials/sidenav.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="/assets/img/logo-round.webp" type="image/x-icon">
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="sidenav">
+        <div class="info">
+            <img src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.webp" alt="Icon" class="logo">
+            <h3 class="name"><%= guild.name %></h3>
+        </div>
+        <div class="links">
+            <p class="title">Informations</p>
+            <a href="/dashboard/<%= guild.id %>" class="item"><i class='bx bx-stats' ></i> Stats</a>
+            <a href="/dashboard/<%= guild.id %>/tickets" class="item active"><i class='bx bx-conversation' ></i> Tickets</a>
+            <a href="/dashboard/<%= guild.id %>/staff" class="item"><i class='bx bx-box' ></i> Staff</a>
+            <p class="title">Settings</p>
+            <a href="/dashboard/<%= guild.id %>/settings" class="item"><i class='bx bx-cog' ></i> General</a>
+            <a href="/dashboard/<%= guild.id %>/settings/panels" class="item"><i class='bx bx-credit-card-front'></i> Panels</a>
+            <a href="/dashboard/<%= guild.id %>/settings/transcripts" class="item"><i class='bx bx-box' ></i> Logs</a>
+            
+            <a href="/dashboard/" class="item last"><i class='bx bx-left-arrow-alt'></i> Server list</a>
+        </div>
+    </div>
+    <div class="sidenav-small">
+        <a href="/dashboard/<%= guild.id %>" class="item"><i class='bx bx-stats' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/tickets" class="item active"><i class='bx bx-conversation' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/staff" class="item"><i class='bx bx-box' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings" class="item"><i class='bx bx-cog' ></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings/panels" class="item"><i class='bx bx-credit-card-front'></i></a>
+        <a href="/dashboard/<%= guild.id %>/settings/transcripts" class="item"><i class='bx bx-box' ></i></a>
+    </div>
+    
+    <% tickets.sort((a, b) => {
+        const aDate = new Date(a.created);
+        const bDate = new Date(b.created);
+
+        return bDate.getTime() - aDate.getTime();
+    }) %>
+    <div class="content">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>Panel</th>
+                <th>Reason</th>
+                <th>User</th>
+                <!-- <th>Staff</th> -->
+                <th>Created</th>
+                <th class="state">State</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% tickets.forEach((ticket) => { %>
+                    <tr>
+                        <td><%- ticket.panel %></td>
+                        <td><% let panel = db.panels[db.panels.findIndex((p) => p.id == ticket.panel)]; %><%= panel ? panel.options[panel.options.findIndex((p) => p.value == ticket.reason)].label : 'Unknown reason' %></td>
+                        <td><%= ticket.authorUser %></td>
+                        <!-- <td><%= ticket.staffUser %></td> -->
+                        <% let date = new Date(ticket.created) %>
+                        <td><%= String(date.getMonth() - 1).length == 1 ? '0' + String(date.getMonth() - 1) : date.getMonth() - 1 %>.<%= String(date.getDate()).length == 1 ? '0' + String(date.getDate()) : date.getDate() %>.<%= date.getFullYear() %></td>
+                        <% var today = new Date(); %>
+                        <% var last = new Date(today.getTime() - (14 * 24 * 60 * 60 * 1000)); %>
+                        <% if(new Date(ticket.created) < last) ticket.state = 'paused' %>
+                        <td class="state <%= ticket.state %>"><%= ticket.state %></td>
+                      </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <div class="pc-only">
+            <h3 class="title">Computer only</h3>
+            <p class="description">This page is for computers only. This is due, among other things, to the power of your device.</p>
+        </div>
+    </div>
+
+    <script src="/assets/js/partials/navbar.js"></script>
+</body>
+</html>

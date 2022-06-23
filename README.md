@@ -1,6 +1,8 @@
 
 # Ticketer discord bot + Dashboard
 
+### YOU MAY NOT CLONE THIS BOT WITHOUT PERMISSION FROM BLACK#1111 FOR CONVENTIONAL AND MAKE IT PUBLIC!
+
 Ticketer provides a fast easy to use ticket system for your server including a dashboard! You can invite Ticketer to your server using the link below:
 
 ### [Invite Ticketer](https://discord.com/oauth2/authorize?client_id=977591057711792178&permissions=137909037169&scope=bot%20applications.commands)
@@ -31,8 +33,11 @@ GUILD_ID=
 CLIENT_SECRET=
 WEB=
 API_KEY=
+TOPGG_KEY=
 PORT=
 LOG_CHANNEL=
+PING_CHANNEL=
+DECRYPT_KEY=
 ```
 If you are unsure on how to get certaint values for the .env open a ticket on our [support server](https://discord.gg/KfBkKKydfg)
 

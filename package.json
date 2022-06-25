@@ -1,5 +1,5 @@
 {
-  "name": "discord-boilerplate-bot",
+  "name": "Tickter",
   "version": "2.0.0",
   "description": "Discord.js v13 boilerplate code. Ready for slash commands. Includes event and command handlers with good file structure!",
   "main": "src/index.js",

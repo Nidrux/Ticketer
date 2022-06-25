@@ -25,6 +25,8 @@
         <br><br>
         <a class="command" id="token">TOKEN=</a>
         <br>
+        <a class="command" id="status">STATUS=</a>
+        <br>
         <a class="command" id="database">DATABASE_URI=</a>
         <br>
         <a class="command" id="devid">GUILD_ID=</a>
@@ -45,6 +47,9 @@
         <script>
             tippy('#token', {
                 content: 'The token is the bot\'s token. You can get it from the discord website.'
+            })
+            tippy('#status', {
+                content: 'Must be PRODUCTION or DEVELOPMENT. PRODUCTION will deploy the commands globally, DEVELOPMENT will deploy the commands on the dev guild.'
             })
             tippy('#database', {
                 content: 'The database uri is the connection string to the database. It have to be a mongoDB uri link.'

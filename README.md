@@ -28,6 +28,7 @@ To use this bot follow the steps given down below.
 
 ```
 TOKEN=
+STATUS=
 DATABASE_URI=
 GUILD_ID=
 CLIENT_SECRET=

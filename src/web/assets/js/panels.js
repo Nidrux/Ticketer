@@ -5,7 +5,7 @@ const createPanel = () => {
   if (newLength > 0) return newMessage('There is already a panel with this id.');
   const panel = document.createElement('div');
   panel.classList.add('item');
-  panel.setAttribute('onclick', 'window.location.href=\'/dashboard/985805914269442068/settings/panels/new-panel\'');
+  panel.setAttribute('onclick', `window.location.href=/dashboard/${guildId}/settings/panels/new-panel`);
   panel.innerHTML = `
   <h2 class="name">New panel</h2>
   <p class="id">new-panel</p>

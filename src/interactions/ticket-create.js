@@ -78,7 +78,7 @@ module.exports = async (client, interaction, dbGuild) => {
     const errorEmbed = new MessageEmbed()
       .setTitle('Error')
       .setColor('RED')
-      .setDescription('I\'m missing the `MANAGE_GUILD` and `MANAGE_ROLES` permissions.')
+      .setDescription('I\'m missing the `MANAGE_ROLES` permission.')
       .setFooter({ text: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) });
 
     return interaction.editReply({ embeds: [errorEmbed], ephemeral: true });

@@ -74,11 +74,20 @@ module.exports = async (client, interaction, dbGuild) => {
   }
 
   /* Check if client has permissions */
-  if (!interaction.guild.me.permissions.has([Permissions.FLAGS.MANAGE_CHANNELS, Permissions.FLAGS.MANAGE_ROLES])) {
+  if (!interaction.guild.me.permissions.has([Permissions.FLAGS.MANAGE_ROLES])) {
     const errorEmbed = new MessageEmbed()
       .setTitle('Error')
       .setColor('RED')
       .setDescription('I\'m missing the `MANAGE_ROLES` permission.')
+      .setFooter({ text: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) });
+
+    return interaction.editReply({ embeds: [errorEmbed], ephemeral: true });
+  }
+  if (!interaction.guild.me.permissions.has([Permissions.FLAGS.MANAGE_CHANNELS])) {
+    const errorEmbed = new MessageEmbed()
+      .setTitle('Error')
+      .setColor('RED')
+      .setDescription('I\'m missing the `MANAGE_CHANNELS` permission.')
       .setFooter({ text: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) });
 
     return interaction.editReply({ embeds: [errorEmbed], ephemeral: true });

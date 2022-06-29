@@ -101,6 +101,11 @@ module.exports = async (client, interaction, dbGuild) => {
 
   setTimeout(async () => {
     let ticket;
+    const noCategory = new MessageEmbed()
+      .setTitle('Error')
+      .setColor('RED')
+      .setDescription(`The category does not exist or got deleted.If you are an admin of this server please create a category and configure it on the [dashboard](https://ticketer.developersdungeon.xyz/dashboard/${interaction.guild.id}).`)
+      .setFooter({ text: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) });
     const errorEmbed = new MessageEmbed()
       .setTitle('Error')
       .setColor('RED')
@@ -124,9 +129,10 @@ module.exports = async (client, interaction, dbGuild) => {
           permissionOverwrites: permissions,
           parent: panel.category,
         });
+        console.log(panel.category);
       } catch (e) {
         errorLog('', client, e, interaction.guild.id, interaction.user.id, interaction.channel.id, `interactions/${interaction.customId}.js`);
-        return interaction.editReply({ embeds: [errorEmbed], ephemeral: true });
+        return interaction.editReply({ embeds: [noCategory], ephemeral: true });
       }
     }
 

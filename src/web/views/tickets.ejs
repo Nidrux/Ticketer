@@ -68,7 +68,7 @@
                 <% tickets.forEach((ticket) => { %>
                     <tr>
                         <td><%- ticket.panel %></td>
-                        <td><% let panel = db.panels[db.panels.findIndex((p) => p.id == ticket.panel)]; %><%= panel ? panel.options[panel.options.findIndex((p) => p.value == ticket.reason)].label : 'Unknown reason' %></td>
+                        <td><% let panel = db.panels[db.panels.findIndex((p) => p.id == ticket.panel)]; %><%= panel ? panel.options[panel.options.findIndex((p) => p.value == ticket.reason)] : 'Unknown reason' %></td>
                         <td><%= ticket.authorUser %></td>
                         <!-- <td><%= ticket.staffUser %></td> -->
                         <% let date = new Date(ticket.created) %>

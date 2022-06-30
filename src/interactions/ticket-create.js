@@ -83,6 +83,15 @@ module.exports = async (client, interaction, dbGuild) => {
 
     return interaction.editReply({ embeds: [errorEmbed], ephemeral: true });
   }
+  if (!interaction.guild.me.permissions.has([Permissions.FLAGS.SEND_MESSAGES])) {
+    const errorEmbed = new MessageEmbed()
+      .setTitle('Error')
+      .setColor('RED')
+      .setDescription('I\'m missing the `SEND_MESSAGES` permission.')
+      .setFooter({ text: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) });
+
+    return interaction.editReply({ embeds: [errorEmbed], ephemeral: true });
+  }
   if (!interaction.guild.me.permissions.has([Permissions.FLAGS.MANAGE_CHANNELS])) {
     const errorEmbed = new MessageEmbed()
       .setTitle('Error')
@@ -98,7 +107,6 @@ module.exports = async (client, interaction, dbGuild) => {
       .setColor('RED')
       .setDescription('I\'m missing the `MANAGE_MESSAGES` permission.')
       .setFooter({ text: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) });
-
     return interaction.editReply({ embeds: [errorEmbed], ephemeral: true });
   }
 

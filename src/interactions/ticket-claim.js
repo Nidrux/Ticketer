@@ -45,7 +45,7 @@ module.exports = async (client, interaction, dbGuild) => {
     const errorEmbed = new MessageEmbed()
       .setTitle('> Claim ticket')
       .setColor('RED')
-      .setDescription('You are missing the `TICKETER_STAFF` permission.')
+      .setDescription('You are missing the **staff** role set on the dashboard or no staff role is configured yet. Please contact a server admin!')
       .setFooter({ text: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) });
 
     interaction.reply({ embeds: [errorEmbed], ephemeral: true });

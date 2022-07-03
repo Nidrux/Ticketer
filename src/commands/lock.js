@@ -56,7 +56,7 @@ module.exports = {
       const errorEmbed = new MessageEmbed()
         .setTitle('> Error')
         .setColor('RED')
-        .setDescription('You are missing the `TICKETER_STAFF` permission.')
+        .setDescription('You are missing the **staff** role set on the dashboard or no staff role is configured yet. Please contact a server admin!')
 
         .setFooter({ text: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) });
 
